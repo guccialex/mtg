@@ -8,14 +8,3 @@ steps:
 
 images: ['gcr.io/cheaper-324003/deckassistant:latest']
 
-
-'''
-using vertex ai alternatively
-
-build the images, push to vertex ai and make a model
-
-then
-
-i have my server interface with the vertex endpoint and return the results
-
-'''
