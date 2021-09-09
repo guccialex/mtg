@@ -1,4 +1,4 @@
-from tensorflow
+from tensorflow/tensorflow:latest
 
 COPY . .
 
