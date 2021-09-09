@@ -235,6 +235,10 @@ fn write_deck_assistant_server_dependencies(){
 
     let lands = actions::getdata::get_lands();
 
+    let mut file = File::create( "deckassistant/lands.json" ).unwrap();
+    let jsontowrite = json!( lands ).to_string();
+    file.write_all( jsontowrite.as_bytes() ).unwrap();
+
     
     let mut towrite: (Vec<Vec<String>>, Vec<Vec<String>>) = (Vec::new(), Vec::new());
     

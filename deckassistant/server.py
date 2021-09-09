@@ -26,7 +26,7 @@ def cardstoprediction(cardnames):
     onehotprediction = predictionmodel.predict( oh )
 
     #return the order of cards
-    return mtgmodule.onehottocardorder(onehotprediction[0])
+    return mtgmodule.onehottocardorderwithoutlands(onehotprediction[0])
 
 
 

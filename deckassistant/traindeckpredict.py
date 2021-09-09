@@ -29,12 +29,12 @@ standardlength = mtgmodule.standardlength()
 
 
 inputs = keras.Input( standardlength )
-m1 = layers.Dense(2000, activation="relu") (inputs)
+m1 = layers.Dense(200, activation="relu") (inputs)
 
-m1 = layers.Dense(1000, activation="relu") (m1)
-m1 = layers.Dense(1000, activation="relu") (m1)
+m1 = layers.Dense(100, activation="relu") (m1)
+m1 = layers.Dense(100, activation="relu") (m1)
 
-o = layers.Dense(2000, activation="relu") (m1)
+o = layers.Dense(200, activation="relu") (m1)
 outputs = layers.Dense( standardlength )(o)
 
 

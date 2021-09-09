@@ -8,6 +8,9 @@ import numpy as np
 fobj = open("standardalphabet.json", "rb")
 alphabet = json.load(fobj)
 
+fobj = open("lands.json", "rb")
+lands = json.load(fobj)
+
 
 
 
@@ -46,13 +49,18 @@ def onehottocards(onehot: list):
 
 
 #get the cards in order, up to 30
-def onehottocardorder(onehot: list):
+def onehottocardorderwithoutlands(onehot: list):
 
     toreturn = []
 
     for index in np.argsort(onehot):
-        toreturn.append( cardidtoname(index) )
+
+        cardname = cardidtoname(index)
+
+        if cardname not in lands:
+            toreturn.append( cardname )
     
+
     #truncate
 
     toreturn.reverse()
