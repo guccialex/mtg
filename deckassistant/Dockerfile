@@ -1,4 +1,4 @@
-from tensorflow/tensorflow:latest
+from google/cloud-sdk:latest
 
 COPY . .
 
@@ -9,9 +9,9 @@ COPY . .
 
 
 #RUN curl -sSL https://sdk.cloud.google.com | bash
-RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-356.0.0-linux-x86_64.tar.gz
+#RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-356.0.0-linux-x86_64.tar.gz
 
-RUN ./google-cloud-sdk/install.sh
+#RUN ./google-cloud-sdk/install.sh
 
 
 RUN gsutil -m cp -r "gs://mtg-ml/PREDICTION/"  .
