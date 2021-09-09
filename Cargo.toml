@@ -1,0 +1,25 @@
+[package]
+name = "mtgmetadata"
+version = "0.1.0"
+authors = ["alex gucci <alexgusain@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+reqwest = { version = "0.11", features = ["json", "cookies"] }
+tokio = { version = "1", features = ["full"] }
+
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+
+rand = "*"
+
+nalgebra = "*"
+
+
+cairo-rs = {version = "0.14.1", features = ["png"]}
+
+
+
+miniz_oxide = "0.4.4"
