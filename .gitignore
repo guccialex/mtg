@@ -2,6 +2,7 @@
 /decks
 /deckassistant/LANDS
 /deckassistant/PREDICTION
+/deckassistant/__pycache__
 password.txt
 /mtgdata
 cheaper-cred.json
