@@ -50,7 +50,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/mtgapi/land_prediction', methods=['POST'])
+@app.route('/land_prediction', methods=['POST'])
 def land_prediction():
     
     content = request.json
@@ -66,7 +66,7 @@ def land_prediction():
 
 
 
-@app.route('/mtgapi/card_prediction', methods=['POST'])
+@app.route('/card_prediction', methods=['POST'])
 def card_prediction():
     
     content = request.json
@@ -84,9 +84,11 @@ def card_prediction():
 
 @app.route('/health', methods=['GET'])
 def health():
-
     return "OK"
 
+@app.route('/', methods=['GET'])
+def health():
+    return "OK"
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0')
