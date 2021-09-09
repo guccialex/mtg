@@ -1,6 +1,20 @@
 steps:
+  #copy the prediction and 
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', '-r', 'gs://mtg-ml/PREDICTION', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/cheaper-324003/deckassistant:latest', '-f', './deckassistant/Dockerfile',  '.' ]
+images: ['gcr.io/cheaper-324003/deckassistant:latest']
+
+
+'''
+using vertex ai alternatively
+
+build the images, push to vertex ai and make a model
+
+then
+
+i have my server interface with the vertex endpoint and return the results
+
+'''
