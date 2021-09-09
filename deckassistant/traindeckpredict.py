@@ -32,8 +32,6 @@ inputs = keras.Input( standardlength )
 m1 = layers.Dense(2000, activation="relu") (inputs)
 
 m1 = layers.Dense(1000, activation="relu") (m1)
-m1 = layers.Dense(300, activation="relu") (m1)
-m1 = layers.Dense(300, activation="relu") (m1)
 m1 = layers.Dense(1000, activation="relu") (m1)
 
 o = layers.Dense(2000, activation="relu") (m1)
@@ -50,7 +48,7 @@ model.compile(
     metrics=["accuracy"],
 )
 
-model.fit(train_inputs, train_labels, batch_size=100, epochs=20)
+model.fit(train_inputs, train_labels, batch_size=10, epochs=4)
 
 model.save('PREDICTION')
 

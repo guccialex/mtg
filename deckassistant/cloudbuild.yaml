@@ -3,6 +3,9 @@ steps:
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', '-r', 'gs://mtg-ml/PREDICTION', '.']
 
+- name: gcr.io/cloud-builders/gsutil
+  args: ['cp', '-r', 'gs://mtg-ml/LANDS', '.']
+
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/cheaper-324003/deckassistant:latest', '-f', './deckassistant/Dockerfile',  '.' ]
 

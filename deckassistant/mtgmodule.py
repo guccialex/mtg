@@ -56,7 +56,7 @@ def onehottocardorder(onehot: list):
     #truncate
 
     toreturn.reverse()
-    del toreturn[25:]
+    del toreturn[40:]
 
 
     return toreturn

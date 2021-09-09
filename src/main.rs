@@ -240,19 +240,33 @@ fn write_deck_assistant_server_dependencies(){
     
 
     //get x random cards from the deck
-    for deck in decks.clone(){
-        towrite.0.push( deck.get_non_lands(&lands) );
-    }
+    for mut deck in decks.clone(){
 
 
-    for deck in decks.clone(){
-        towrite.1.push( deck.get_lands(&lands) );
+        for x in 0..5{
+            towrite.1.push( deck.get_lands(&lands) );
+        }
+
+        for x in 0..5{
+            towrite.0.push( deck.get_non_lands(&lands) );
+
+            deck.remove_x_random_cards(10);
+        }
+    
     }
 
 
     let mut file = File::create( "deckassistant/cardstolands.json" ).unwrap();
     let jsontowrite = json!(towrite ).to_string();
     file.write_all( jsontowrite.as_bytes() ).unwrap();
+
+
+
+
+    //take a list of cards by mana cost
+    //output the list of lands
+
+    //input is the total mana symbols
 
 
 

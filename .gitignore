@@ -3,6 +3,8 @@
 /deckassistant/LANDS
 /deckassistant/PREDICTION
 /deckassistant/__pycache__
+/deckassistant/auto_model
+/deckassistant/my_dir
 password.txt
 /mtgdata
 cheaper-cred.json

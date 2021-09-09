@@ -57,6 +57,20 @@ impl Deck{
         return toreturn;
     }
 
+    pub fn remove_x_random_cards(&mut self, number: u32 ){
+
+        use rand::seq::SliceRandom; 
+
+        for _ in 0..number{
+
+            //get a random card in the list of cards
+            let element = self.cards.choose(&mut rand::thread_rng()).unwrap().clone(); 
+
+            self.cards.remove( self.cards.iter().position(|x| *x == element).expect("needle not found") );
+        }
+
+    }
+
 
     pub fn get_lands(&self, lands: &Vec<String>) -> Vec<String>{
 

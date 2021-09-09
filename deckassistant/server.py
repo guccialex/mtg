@@ -12,11 +12,9 @@ import mtgmodule
 predictionmodel = keras.models.load_model('PREDICTION')
 
 
-#landsmodel = keras.models.load_model('LANDS')
-
-import autokeras as ak
-
-landsmodel = keras.models.load_model("LANDS", custom_objects=ak.CUSTOM_OBJECTS)
+#import autokeras as ak
+landsmodel = keras.models.load_model('LANDS')
+#landsmodel = keras.models.load_model("LANDS", custom_objects=ak.CUSTOM_OBJECTS)
 
 
 #given a list of cards
