@@ -5,6 +5,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/cheaper-324003/deckassistant:latest', '-f', './deckassistant/Dockerfile',  '.' ]
+
 images: ['gcr.io/cheaper-324003/deckassistant:latest']
 
 
