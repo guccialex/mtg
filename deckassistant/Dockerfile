@@ -1,6 +1,12 @@
 from tensorflow/tensorflow:latest
 
-COPY . .
+RUN echo "hey"
+
+COPY . /app
+
+WORKDIR app
+
+RUN ls
 
 
 RUN pip install waitress
@@ -8,4 +14,4 @@ RUN pip install flask
 RUN pip install flask_cors
 
 
-CMD python3 sever.py
+CMD python3 server.py
