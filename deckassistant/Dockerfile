@@ -13,5 +13,7 @@ RUN pip install waitress
 RUN pip install flask
 RUN pip install flask_cors
 
+RUN ls
 
-CMD python3 server.py
+
+CMD python3 ./server.py
