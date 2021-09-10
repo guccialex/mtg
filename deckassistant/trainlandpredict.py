@@ -54,7 +54,7 @@ model.compile(
     metrics=["accuracy"],
 )
 
-model.fit(train_inputs, train_labels, batch_size=20, epochs=3)
+model.fit(train_inputs, train_labels, batch_size=20, epochs=1)
 model.save('LANDS')
 
 '''

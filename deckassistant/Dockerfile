@@ -8,4 +8,4 @@ RUN pip install flask
 RUN pip install flask_cors
 
 
-CMD waitress-serve --port=8000 server:app
+CMD python3 sever.py

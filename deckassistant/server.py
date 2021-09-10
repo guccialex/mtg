@@ -91,3 +91,6 @@ def health():
 def root():
     return "OK"
 
+import waitress
+
+waitress.serve(app, port=8000, url_scheme='http')
