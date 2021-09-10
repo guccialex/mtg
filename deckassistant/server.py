@@ -47,6 +47,7 @@ from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 
 app = Flask(__name__)
+
 CORS(app)
 
 
@@ -87,9 +88,6 @@ def health():
     return "OK"
 
 @app.route('/', methods=['GET'])
-def health():
+def root():
     return "OK"
-
-if __name__ == '__main__':
-    app.run(host= '0.0.0.0')
 
