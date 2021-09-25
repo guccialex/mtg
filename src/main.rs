@@ -79,24 +79,33 @@ fn get_cards_to_shared_cards(decks: &Vec<Deck>, alphabet: &Vec<String>) -> HashM
             //the numbers of this card in the deck
             let numberofmaincard = deck.cards.iter().filter(|&n| n == maincard).count();
 
-            for othercard in &deck.cards{
+            if numberofmaincard > 0{
 
-                let counter = associated.entry( othercard.to_string() ).or_insert(0);
+                for othercard in &deck.cards{
 
-                *counter += numberofmaincard as u32;
+                    let counter = associated.entry( othercard.to_string() ).or_insert(0);
+    
+                    *counter += numberofmaincard as u32;
+    
+                    totalassociated += numberofmaincard as f32;
+                }
 
-                totalassociated += numberofmaincard as f32;
             }
 
         }
 
 
+        
         //now divide each by the total amount of cards in it
         let mut toreturn: HashMap<String, f32> = HashMap::new();
 
         for (card, number) in associated{
+
+
             toreturn.insert( card.clone() , number as f32 / totalassociated as f32 );
         }
+
+        println!("toreturn {:?}", toreturn);
 
         endvalue.insert( maincard.clone(), toreturn );
     }
@@ -121,7 +130,6 @@ fn write_bbbbeeee_dependencies(){
     
     
 
-    println!("first");
     std::fs::create_dir("mtgdata");
 
 
@@ -132,8 +140,6 @@ fn write_bbbbeeee_dependencies(){
     let jsontowrite = json!(cardtoassociated).to_string();
     file.write_all( jsontowrite.as_bytes() ).unwrap();
     
-    println!("second");
-
 
     let cardmetaorder = structs::cards_by_meta_order(&decks, &alphabet);
 
@@ -142,8 +148,6 @@ fn write_bbbbeeee_dependencies(){
     file.write_all( jsontowrite.as_bytes() ).unwrap();
     
 
-    println!("adddde");
-    
     std::fs::create_dir("mtgdata/majorization");
 
 
@@ -165,8 +169,6 @@ fn write_bbbbeeee_dependencies(){
     let jsontowrite = json!(deckcards).to_string();
     file.write_all( jsontowrite.as_bytes() ).unwrap();
 
-    println!("and HERe");
-
 
     decks.truncate(1500);
 
@@ -178,9 +180,6 @@ fn write_bbbbeeee_dependencies(){
     file.write_all( towrite.as_bytes() ).unwrap();
     
 
-    println!("HERe");
-
-
 
     let output = Command::new("python3")
     .current_dir(".")
@@ -189,11 +188,8 @@ fn write_bbbbeeee_dependencies(){
     .expect("failed to execute process");
 
 
-    let onesec = time::Duration::from_millis(5000);
-    thread::sleep(onesec);
+    thread::sleep(time::Duration::from_millis(5000));
     
-
-    println!("now HERe");
 
 
 
@@ -295,12 +291,28 @@ async fn main() {
     //fetch_files().await;
 
     //write_bbbbeeee_dependencies();
-    write_deck_assistant_server_dependencies();
-
-
+    //write_deck_assistant_server_dependencies();
 
     //decks.truncate(500);
     //majorization::manual_majorization(decks);
+
+
+
+
+
+    
+    let decks = actions::getdata::get_standard_decks_from_files();
+    let alphabet = actions::getdata::get_standard_alphabet();
+    
+
+    std::fs::create_dir("mtgdata");
+
+
+    
+    let cardtoassociated = get_cards_to_shared_cards( &decks, &alphabet ) ;
+    let mut file = File::create( "mtgdata/cardtoassociated.json" ).unwrap();
+    let jsontowrite = json!(cardtoassociated).to_string();
+    file.write_all( jsontowrite.as_bytes() ).unwrap();
 
 
 

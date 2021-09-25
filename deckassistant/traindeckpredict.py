@@ -29,12 +29,10 @@ standardlength = mtgmodule.standardlength()
 
 
 inputs = keras.Input( standardlength )
-m1 = layers.Dense(1500, activation="relu") (inputs)
-
-m1 = layers.Dense(1500, activation="relu") (m1)
-m1 = layers.Dense(1500, activation="relu") (m1)
-
-o = layers.Dense(1500, activation="relu") (m1)
+m1 = layers.Dense(150, activation="relu") (inputs)
+m1 = layers.Dense(150, activation="relu") (m1)
+m1 = layers.Dense(150, activation="relu") (m1)
+o = layers.Dense(150, activation="relu") (m1)
 outputs = layers.Dense( standardlength )(o)
 
 
@@ -48,7 +46,14 @@ model.compile(
     metrics=["accuracy"],
 )
 
-model.fit(train_inputs, train_labels, batch_size=10, epochs=4)
+model.fit(train_inputs, train_labels, batch_size=100, epochs=1)
 
-model.save('PREDICTION')
+print(model.outputs)
+print(model.inputs)
 
+
+import tf2onnx
+
+output_path = "test.onnx"
+
+tf2onnx.convert.from_keras(model,  opset=13, output_path=output_path)
